@@ -1,0 +1,20 @@
+---
+import { actions } from 'astro:actions';
+
+const result = Astro.getActionResult(actions.getGreeting);
+if (result && !result.error) {
+  return Astro.redirect(`/`);
+}
+---
+
+<form method="POST" action={actions.getGreeting}>
+  <label for="email">E-mail</label>
+  <input id="email" required type="email" name="email" />
+  <label>
+    <input required type="checkbox" name="terms">
+    I agree to the terms of service
+  </label>
+  <button>Sign up</button>
+</form>
+
+
